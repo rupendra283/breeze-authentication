@@ -17,8 +17,11 @@ use Illuminate\Support\Facades\Route;
     // Admin Routes
 Route::prefix('admin')->group(function(){
     Route::get('/login',[AdminController::class,'index'])->name('login_form');
-    Route::get('/login/owner',[AdminController::class,'login'])->name('admin.login');
-    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+    Route::post('/login/owner',[AdminController::class,'login'])->name('admin.login');
+    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard')->middleware('admin');
+    Route::get('/logout',[AdminController::class,'adminLogout'])->name('admin.logout')->middleware('admin');
+    Route::get('/register',[AdminController::class,'adminRegister'])->name('admin.register')->middleware('admin');
+    Route::post('/register/create',[AdminController::class,'adminRegisterCreate'])->name('admin.register.create')->middleware('admin');
 
 });
 
