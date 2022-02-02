@@ -29,12 +29,12 @@ Route::prefix('admin')->group(function(){
 // Seller Route
 
 Route::prefix('seller')->group(function(){
-    Route::get('/login',[SellerController::class,'index'])->name('seller.login_form');
-    Route::post('/login/owner',[SellerController::class,'login'])->name('admin.login');
-    Route::get('/dashboard',[SellerController::class,'dashboard'])->name('admin.dashboard')->middleware('admin');
-    Route::get('/logout',[SellerController::class,'sellerLogout'])->name('admin.logout')->middleware('admin');
-    Route::get('/register',[SellerController::class,'sellerRegister'])->name('admin.register')->middleware('admin');
-    Route::post('/register/create',[SellerController::class,'adminRegisterCreate'])->name('admin.register.create')->middleware('admin');
+    Route::get('/login',[SellerController::class,'sellerindex'])->name('seller.login_form');
+    Route::post('/login/owner',[SellerController::class,'login'])->name('seller.login');
+    Route::get('/dashboard',[SellerController::class,'dashboard'])->name('seller.dashboard')->middleware('seller');
+    Route::get('/logout',[SellerController::class,'sellerLogout'])->name('seller.logout')->middleware('seller');
+    Route::get('/register',[SellerController::class,'sellerRegister'])->name('seller.register')->middleware('seller');
+    Route::post('/register/create',[SellerController::class,'sellerRegisterCreate'])->name('seller.register.create')->middleware('seller');
 
 });
 
